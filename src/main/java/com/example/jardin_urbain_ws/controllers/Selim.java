@@ -30,6 +30,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping(path = "quiz",produces = "application/json")
+@CrossOrigin(origins = "http://localhost:3000/")
 public class Selim {
 
     private final Model model;
