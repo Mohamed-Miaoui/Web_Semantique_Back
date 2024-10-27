@@ -28,7 +28,7 @@ public class BlogController {
 
     private final Model model;
     private final String NAMESPACE = "http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#";
-    private final String RDF_FILE = "data/blog_data.rdf";
+    private final String RDF_FILE = "data/sementique_finale.rdf";
 
     public BlogController() {
         this.model = ModelFactory.createDefaultModel();

@@ -29,7 +29,7 @@ public class ReviewController {
 
     private final Model model;
     private final String NAMESPACE = "http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#";
-    private final String RDF_FILE = "data/review_data.rdf";
+    private final String RDF_FILE = "data/sementique_finale.rdf";
 
     public ReviewController() {
         this.model = ModelFactory.createDefaultModel();
