@@ -1,6 +1,5 @@
 package com.example.jardin_urbain_ws.controllers;
 
-import com.example.jardin_urbain_ws.JenaEngine;
 import com.example.jardin_urbain_ws.Plant;
 import org.apache.jena.ontology.Individual;
 import org.apache.jena.ontology.OntModel;
@@ -11,10 +10,7 @@ import org.apache.jena.query.ResultSet;
 import org.apache.jena.query.ResultSetFormatter;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
-import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.util.FileManager;
-import org.apache.jena.vocabulary.RDF;
-import org.apache.jena.vocabulary.RDFS;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.http.HttpStatus;
@@ -25,25 +21,22 @@ import java.io.ByteArrayOutputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.util.Map;
-import java.util.UUID;
 
 @RestController
-@RequestMapping(path = "Plant",produces = "application/json")
+@RequestMapping(path = "plant",produces = "application/json")
 @CrossOrigin(origins = "http://localhost:3000/")
-public class Hamdi {
+public class PlantController {
 
     private final Model model;
     private final String NAMESPACE = "http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#";
-    private final String RDF_FILE = "data/sementique_finale.rdf"; 
-
-    public Hamdi() {
-        this.model = ModelFactory.createDefaultModel();
-        loadModel();
-    }
-
+    private final String RDF_FILE = "data/sementique_finale.rdf";
     private void loadModel() {
         FileManager.get().readModel(model, RDF_FILE);
+    }
+
+    public PlantController() {
+        this.model = ModelFactory.createDefaultModel();
+        loadModel();
     }
 
     public Model getModel() {
@@ -62,9 +55,8 @@ public class Hamdi {
                 "    ?Plant ont:type ?type .\n" +
                 "    ?Plant ont:water_needs ?water_needs .\n" +
                 "}";
-        String qexec = queryString;
 
-        QueryExecution qe = QueryExecutionFactory.create(qexec, model);
+        QueryExecution qe = QueryExecutionFactory.create(queryString, model);
         ResultSet results = qe.execSelect();
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 
@@ -73,21 +65,33 @@ public class Hamdi {
         String json = new String(outputStream.toByteArray());
         JSONObject j = new JSONObject(json);
 
-        JSONArray res = j.getJSONObject("results").getJSONArray("bindings");
+        String jsonString = j.getJSONObject("results").getJSONArray("bindings").toString();
+        JSONArray jsonArray = new JSONArray(jsonString);
+        JSONArray transformedArray = new JSONArray();
 
-        return j.getJSONObject("results").getJSONArray("bindings").toString();
+        for (int i = 0; i < jsonArray.length(); i++) {
+            JSONObject item = jsonArray.getJSONObject(i);
+            JSONObject transformedItem = new JSONObject();
+
+            transformedItem.put("uri", item.getJSONObject("Plant").getString("value"));
+            transformedItem.put("name", item.getJSONObject("name").getString("value"));
+            transformedItem.put("type", item.getJSONObject("type").getString("value"));
+            transformedItem.put("water_needs", Double.parseDouble(item.getJSONObject("water_needs").getString("value")));
+
+            transformedArray.put(transformedItem);
+        }
+        return transformedArray.toString();
+
     }
 
     @PostMapping
     public ResponseEntity<String> addPlant(@RequestBody Plant Plant) {
 
         OntModel ontModel = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM_MICRO_RULE_INF, model);
-
         Individual postIndividual = ontModel.createIndividual(NAMESPACE+"Plant_" + System.currentTimeMillis(), ontModel.getOntClass(NAMESPACE+"Plant"));
-
         postIndividual.addProperty(ontModel.getDatatypeProperty(NAMESPACE+"name"), Plant.getName());
         postIndividual.addProperty(ontModel.getDatatypeProperty(NAMESPACE+"type"), Plant.getType());
-        postIndividual.addProperty(ontModel.getDatatypeProperty(NAMESPACE+"water_needs"), Plant.getWater_needs());
+        postIndividual.addProperty(ontModel.getDatatypeProperty(NAMESPACE+"water_needs"), Plant.getWater_needs().toString());
 
         try (OutputStream outputStream = new FileOutputStream(RDF_FILE)) {
             ontModel.write(outputStream, "RDF/XML-ABBREV");
@@ -116,7 +120,6 @@ public class Hamdi {
             try (OutputStream outputStream = new FileOutputStream(RDF_FILE)) {
                 ontModel.write(outputStream, "RDF/XML-ABBREV");
             } catch (IOException e) {
-                e.printStackTrace();
                 return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to delete the Plant.");
             }
 
