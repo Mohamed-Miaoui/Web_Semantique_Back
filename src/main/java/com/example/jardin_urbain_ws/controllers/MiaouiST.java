@@ -81,6 +81,33 @@ public class MiaouiST {
         return j.getJSONObject("results").getJSONArray("bindings").toString();
     }
 
+    @GetMapping("StoreSeed")
+    public String getStoreBySeed(@RequestParam("URI") String uri) {
+        // Define the SPARQL query
+        String queryString = String.format(
+                "PREFIX ont: <http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#> " +
+                        "SELECT ?Store ?name ?phone " +
+                        "WHERE { " +
+                        "    ?Store ont:follows <%s> . " + // Match quizzes following the specified tutorial
+                        "    ?Store a ont:Store . " + // Ensure ?quiz is of type Quiz
+                        "    ?Store ont:phone ?phone . " + // Retrieve the quiz question
+                        "}",
+                uri);
+
+        QueryExecution qe = QueryExecutionFactory.create(queryString, model);
+        ResultSet results = qe.execSelect();
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+
+        ResultSetFormatter.outputAsJSON(outputStream, results);
+
+        String json = new String(outputStream.toByteArray());
+        JSONObject j = new JSONObject(json);
+
+        JSONArray res = j.getJSONObject("results").getJSONArray("bindings");
+
+        return j.getJSONObject("results").getJSONArray("bindings").toString();
+    }
+
     @PostMapping
     public ResponseEntity<String> addStore(@RequestBody Store Store) {
 
