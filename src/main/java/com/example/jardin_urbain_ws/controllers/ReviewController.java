@@ -10,6 +10,8 @@ import org.apache.jena.query.ResultSet;
 import org.apache.jena.query.ResultSetFormatter;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
+import org.apache.jena.rdf.model.Property;
+import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.util.FileManager;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -113,4 +115,34 @@ public class ReviewController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Review not found.");
         }
     }
+
+    @PutMapping
+    public ResponseEntity<String> addReviewToBlog(@RequestParam("reviewURI") String reviewURI, @RequestParam("blogURI") String blogURI) {
+
+        // Create an ontology model for inference
+        OntModel ontModel = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM_MICRO_RULE_INF, model);
+
+        // Retrieve the blog resource
+        Resource blogResource = model.getResource(blogURI);
+
+        // Define the property for associating a review with a blog
+        Property ReceivesProperty = model.createProperty(NAMESPACE + "receives");
+
+        // Remove any existing `hasReview` property from the blog to avoid duplication
+        blogResource.removeAll(ReceivesProperty);
+
+        // Add the `hasReview` property to link the blog with the review URI
+        blogResource.addProperty(ReceivesProperty, model.createResource(reviewURI));
+
+        // Save the updated model back to RDF
+        try (FileOutputStream out = new FileOutputStream(RDF_FILE)) {
+            ontModel.write(out, "RDF/XML-ABBREV");
+        } catch (IOException e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error saving updated RDF model.");
+        }
+
+        return ResponseEntity.ok("Review added to blog successfully.");
+    }
+
 }

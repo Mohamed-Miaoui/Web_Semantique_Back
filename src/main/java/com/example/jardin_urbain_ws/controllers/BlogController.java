@@ -9,6 +9,8 @@ import org.apache.jena.query.ResultSet;
 import org.apache.jena.query.ResultSetFormatter;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
+import org.apache.jena.rdf.model.Property;
+import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.util.FileManager;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -112,4 +114,34 @@ public class BlogController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Blog not found.");
         }
     }
+    @GetMapping("reviews")
+    public String getReviewsByBlog(@RequestParam("URI") String blogURI) {
+
+        String queryString = String.format(
+                "PREFIX ont: <http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#> " +
+                        "SELECT ?review ?user ?content ?date " +
+                        "WHERE { " +
+                        "    <%s> ont:hasReview ?review . " +   // Trouver les avis associés au blog
+                        "    ?review a ont:Review . " +        // Assurez-vous que ?review est de type Review
+                        "    ?review ont:user ?user . " +      // Récupérer le nom d'utilisateur de l'avis
+                        "    ?review ont:content ?content . " + // Récupérer le contenu de l'avis
+                        "    ?review ont:date ?date . " +      // Récupérer la date de l'avis
+                        "}", blogURI);
+
+
+        QueryExecution qe = QueryExecutionFactory.create(queryString, model);
+        ResultSet results = qe.execSelect();
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+
+
+        ResultSetFormatter.outputAsJSON(outputStream, results);
+
+
+        String json = new String(outputStream.toByteArray());
+        JSONObject j = new JSONObject(json);
+
+        return j.getJSONObject("results").getJSONArray("bindings").toString();
+    }
+
+
 }
