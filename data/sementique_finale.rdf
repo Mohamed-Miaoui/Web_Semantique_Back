@@ -164,9 +164,43 @@
     <rdfs:domain rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Quiz"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
+  <j.0:Seed rdf:about="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Seed_1730041676124">
+    <j.0:type>Wheat</j.0:type>
+    <j.0:price rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+    >122.0</j.0:price>
+    <j.0:availability rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+    >true</j.0:availability>
+  </j.0:Seed>
   <j.0:Plant rdf:about="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Plant_1730030607348">
     <j.0:water_needs>5.0</j.0:water_needs>
     <j.0:type>123h</j.0:type>
     <j.0:name>zzzzz</j.0:name>
   </j.0:Plant>
+  <j.0:Seed rdf:about="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Seed_1730041794658">
+    <j.0:type>SEEDI Bous3id</j.0:type>
+    <j.0:price rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+    >122.0</j.0:price>
+    <j.0:availability rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+    >false</j.0:availability>
+  </j.0:Seed>
+  <j.0:Quiz rdf:about="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Quiz_1729986810322">
+    <j.0:answer>0.5kg</j.0:answer>
+    <j.0:question>how much is rtal?</j.0:question>
+  </j.0:Quiz>
+  <j.0:Store rdf:about="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Store_1730040105751">
+    <j.0:location>ariana</j.0:location>
+    <j.0:phone rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+    >98744748</j.0:phone>
+    <j.0:name>zarbout</j.0:name>
+  </j.0:Store>
+  <j.0:Store rdf:about="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Store_1730021267670">
+    <j.0:name>Sanjoub_Bayé3_L7boub</j.0:name>
+    <j.0:phone rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+    >65584222</j.0:phone>
+    <j.0:location>Ariana</j.0:location>
+  </j.0:Store>
+  <j.0:Quiz rdf:about="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Quiz_1729986795444">
+    <j.0:answer>i'm not gay</j.0:answer>
+    <j.0:question>why are you gay</j.0:question>
+  </j.0:Quiz>
 </rdf:RDF>
