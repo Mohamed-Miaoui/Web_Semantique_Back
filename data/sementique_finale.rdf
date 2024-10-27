@@ -181,6 +181,11 @@
     <j.0:date>2024-10-27</j.0:date>
     <j.0:content>This is the content of my first blog post.</j.0:content>
   </j.0:Blog>
+  <j.0:Review rdf:about="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Review_1730049800317">
+    <j.0:date>2024-10-26</j.0:date>
+    <j.0:content>dfjsdlkfjsldk</j.0:content>
+    <j.0:user>sami</j.0:user>
+  </j.0:Review>
   <j.0:Seed rdf:about="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Seed_1730041794658">
     <j.0:type>SEEDI Bous3id</j.0:type>
     <j.0:price rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
