@@ -20,6 +20,8 @@ import java.io.ByteArrayOutputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping(path = "tuto", produces = "application/json")
@@ -45,7 +47,6 @@ public class TutorialController {
 
     @GetMapping()
     public String gteTutos() {
-
         String queryString = "PREFIX ont: <http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#>\n" + "\n" + "SELECT ?tutorial ?title ?content ?estimated_time\n" + "WHERE {\n" + "    ?tutorial a ont:Tutorial .\n" + "    ?tutorial ont:title ?title .\n" + "    ?tutorial ont:content ?content .\n" + "    ?tutorial ont:estimated_time ?estimated_time .\n" + "}";
         String qexec = queryString;
 
@@ -63,33 +64,8 @@ public class TutorialController {
         return j.getJSONObject("results").getJSONArray("bindings").toString();
     }
 
-    @GetMapping("quiz")
-    public String getTutoByQuiz(@RequestParam("URI") String uri) {
-        // Define the SPARQL query
-        String queryString = String.format("PREFIX ont: <http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#> " + "SELECT ?tutorial ?title ?content ?estimated_time " + "WHERE { " + "    BIND(<%s> AS ?quiz) . " + "    ?quiz ont:follows ?follows . " + // Get the follows element
-                "    ?follows a ont:Tutorial . " + // Ensure follows is of type Tutorial
-                "    ?follows ont:title ?title . " + // Retrieve the title of the tutorial
-                "    ?follows ont:content ?content . " + // Retrieve the content of the tutorial
-                "    ?follows ont:estimated_time ?estimated_time . " + // Retrieve estimated time
-                "}", uri);
-
-        QueryExecution qe = QueryExecutionFactory.create(queryString, model);
-        ResultSet results = qe.execSelect();
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-
-        ResultSetFormatter.outputAsJSON(outputStream, results);
-
-        String json = new String(outputStream.toByteArray());
-        JSONObject j = new JSONObject(json);
-
-        JSONArray res = j.getJSONObject("results").getJSONArray("bindings");
-
-        return j.getJSONObject("results").getJSONArray("bindings").toString();
-    }
-
     @PostMapping()
     public ResponseEntity<String> addTuto(@RequestBody Tutorial tutorial) {
-
         OntModel ontModel = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM_MICRO_RULE_INF, model);
 
         Individual postIndividual = ontModel.createIndividual(NAMESPACE + "Tutorial" + System.currentTimeMillis(), ontModel.getOntClass(NAMESPACE + "Tutorial"));
@@ -110,6 +86,7 @@ public class TutorialController {
 
     @DeleteMapping()
     public ResponseEntity<String> deleteTuto(@RequestParam("URI") String uri) {
+        loadModel();
 
         // Create an OntModel that performs inference
         OntModel ontModel = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM_MICRO_RULE_INF, model);
@@ -118,25 +95,44 @@ public class TutorialController {
         Individual postIndividual = ontModel.getIndividual(uri);
 
         if (postIndividual != null) {
-            // Delete the post individual
+            // Collect the properties to delete first
+            List<Statement> statementsToDelete = new ArrayList<>();
+            StmtIterator iter = postIndividual.listProperties();
+
+            while (iter.hasNext()) {
+                Statement stmt = iter.nextStatement();
+                statementsToDelete.add(stmt);
+            }
+
+            // Now remove the collected statements
+            for (Statement stmt : statementsToDelete) {
+                ontModel.remove(stmt);
+            }
+
+            // Delete the post individual itself
             postIndividual.remove();
 
             // Save the updated RDF data to your file or database
             try (OutputStream outputStream = new FileOutputStream(RDF_FILE)) {
                 ontModel.write(outputStream, "RDF/XML-ABBREV");
+                loadModel();
             } catch (IOException e) {
                 e.printStackTrace();
                 return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to delete the tutorial.");
             }
-
+            loadModel();
             return ResponseEntity.status(HttpStatus.OK).body("Tutorial deleted successfully.");
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Tutorial not found.");
         }
     }
 
+
     @PutMapping
     public ResponseEntity<String> addTutoToQuiz(@RequestParam("tutorialURI") String tutorialURI, @RequestParam("quizURI") String quizURI) {
+
+        OntModel ontModel = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM_MICRO_RULE_INF, model);
+
         Resource quizResource = model.getResource(quizURI);
         Property followsProperty = model.createProperty(NAMESPACE + "follows");
 
@@ -147,8 +143,8 @@ public class TutorialController {
         quizResource.addProperty(followsProperty, model.createResource(tutorialURI));
 
         // Save the updated model back to RDF
-        try (FileOutputStream out = new FileOutputStream(RDF_FILE)) { // Replace with your output path
-            model.write(out, "RDF/XML");
+        try (FileOutputStream out = new FileOutputStream(RDF_FILE)) {
+            ontModel.write(out, "RDF/XML-ABBREV");
         } catch (IOException e) {
             e.printStackTrace();
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error saving updated RDF model.");

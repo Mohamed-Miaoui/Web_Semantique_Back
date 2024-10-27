@@ -45,14 +45,21 @@ public class QuizController {
 
     @GetMapping()
     public String getQuizzs() {
+        loadModel();
 
         String queryString = "PREFIX ont: <http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#>\n" +
                 "\n" +
-                "SELECT ?quiz ?question ?answer\n" +
+                "SELECT ?quiz ?question ?answer ?tutorial ?tutorialTitle ?tutorialContent ?tutorialEstimatedTime\n" +
                 "WHERE {\n" +
                 "    ?quiz a ont:Quiz .\n" +
                 "    ?quiz ont:question ?question .\n" +
                 "    ?quiz ont:answer ?answer .\n" +
+                "    OPTIONAL {\n" +
+                "        ?quiz ont:follows ?tutorial .\n" +
+                "        ?tutorial ont:title ?tutorialTitle .\n" +
+                "        ?tutorial ont:content ?tutorialContent .\n" +
+                "        ?tutorial ont:estimated_time ?tutorialEstimatedTime .\n" +
+                "    }\n" +
                 "}";
         String qexec = queryString;
 
@@ -71,9 +78,35 @@ public class QuizController {
     }
 
 
+    @GetMapping("tuto")
+    public String getQuizByTutorial(@RequestParam("URI") String uri) {
+        // Define the SPARQL query
+        String queryString = String.format(
+                "PREFIX ont: <http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#> " +
+                        "SELECT ?quiz ?question " +
+                        "WHERE { " +
+                        "    ?quiz ont:follows <%s> . " +  // Match quizzes following the specified tutorial
+                        "    ?quiz a ont:Quiz . " +       // Ensure ?quiz is of type Quiz
+                        "    ?quiz ont:question ?question . " + // Retrieve the quiz question
+                        "}", uri);
+
+        QueryExecution qe = QueryExecutionFactory.create(queryString, model);
+        ResultSet results = qe.execSelect();
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+
+        ResultSetFormatter.outputAsJSON(outputStream, results);
+
+        String json = new String(outputStream.toByteArray());
+        JSONObject j = new JSONObject(json);
+
+        JSONArray res = j.getJSONObject("results").getJSONArray("bindings");
+
+        return j.getJSONObject("results").getJSONArray("bindings").toString();
+    }
 
     @GetMapping("{search}")
     public String searchQuizs(@PathVariable String search) {
+        loadModel();
 
         String queryString = "PREFIX ont: <http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#>\n" +
                 "\n" +
@@ -102,7 +135,6 @@ public class QuizController {
 
     @PostMapping
     public ResponseEntity<String> addQuiz(@RequestBody Quiz quiz) {
-
         OntModel ontModel = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM_MICRO_RULE_INF, model);
 
         Individual postIndividual = ontModel.createIndividual(NAMESPACE + "Quiz_" + System.currentTimeMillis(), ontModel.getOntClass(NAMESPACE + "Quiz"));
@@ -122,7 +154,6 @@ public class QuizController {
 
     @DeleteMapping()
     public ResponseEntity<String> deleteQuiz(@RequestParam("URI") String uri) {
-
         // Create an OntModel that performs inference
         OntModel ontModel = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM_MICRO_RULE_INF, model);
 
