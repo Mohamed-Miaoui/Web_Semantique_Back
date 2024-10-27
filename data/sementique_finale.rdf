@@ -164,6 +164,16 @@
     <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
   </owl:FunctionalProperty>
+  <j.0:Tutorial rdf:about="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Tutorial1729993325514">
+    <j.0:estimated_time>1</j.0:estimated_time>
+    <j.0:content>a</j.0:content>
+    <j.0:title>a</j.0:title>
+  </j.0:Tutorial>
+  <j.0:Tutorial rdf:about="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Tutorial1729992840680">
+    <j.0:estimated_time>12</j.0:estimated_time>
+    <j.0:content>aa</j.0:content>
+    <j.0:title>aa</j.0:title>
+  </j.0:Tutorial>
   <j.0:Quiz rdf:about="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Quiz_1729986810322">
     <j.0:answer>0.5kg</j.0:answer>
     <j.0:question>how much is rtal?</j.0:question>
