@@ -2,6 +2,7 @@ package com.example.jardin_urbain_ws.controllers;
 
 import com.example.jardin_urbain_ws.JenaEngine;
 import com.example.jardin_urbain_ws.Quiz;
+import com.example.jardin_urbain_ws.Seed;
 import com.example.jardin_urbain_ws.Store;
 
 import org.apache.jena.ontology.Individual;
@@ -31,15 +32,14 @@ import java.util.Map;
 import java.util.UUID;
 
 @RestController
-@RequestMapping(path = "store", produces = "application/json")
+@RequestMapping(path = "seed", produces = "application/json")
 @CrossOrigin(origins = "http://localhost:3000/")
-public class MiaouiST {
-
+public class MiaouiSD {
     private final Model model;
     private final String NAMESPACE = "http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#";
     private final String RDF_FILE = "data/sementique_finale.rdf"; // Adjust path as needed
 
-    public MiaouiST() {
+    public MiaouiSD() {
         this.model = ModelFactory.createDefaultModel();
         loadModel();
     }
@@ -53,17 +53,17 @@ public class MiaouiST {
     }
 
     @GetMapping()
-    public String getStores() {
+    public String getSeeds() {
 
         String queryString = "PREFIX ont: <http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#>\n"
                 +
                 "\n" +
-                "SELECT ?Store ?name ?phone ?location\n" +
+                "SELECT ?Seed ?type ?price ?availability\n" +
                 "WHERE {\n" +
-                "    ?Store a ont:Store .\n" +
-                "    ?Store ont:name ?name .\n" +
-                "    ?Store ont:phone ?phone .\n" +
-                "    ?Store ont:location ?location .\n" +
+                "    ?Seed a ont:Seed .\n" +
+                "    ?Seed ont:type ?type .\n" +
+                "    ?Seed ont:price ?price .\n" +
+                "    ?Seed ont:availability ?availability .\n" +
                 "}";
         String qexec = queryString;
 
@@ -82,17 +82,19 @@ public class MiaouiST {
     }
 
     @PostMapping
-    public ResponseEntity<String> addStore(@RequestBody Store Store) {
+    public ResponseEntity<String> addSeed(@RequestBody Seed Seed) {
 
         OntModel ontModel = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM_MICRO_RULE_INF, model);
 
-        Individual postIndividual = ontModel.createIndividual(NAMESPACE + "Store_" + System.currentTimeMillis(),
-                ontModel.getOntClass(NAMESPACE + "Store"));
+        Individual postIndividual = ontModel.createIndividual(NAMESPACE + "Seed_" + System.currentTimeMillis(),
+                ontModel.getOntClass(NAMESPACE + "Seed"));
 
-        postIndividual.addProperty(ontModel.getDatatypeProperty(NAMESPACE + "name"), Store.getName());
-        postIndividual.addProperty(ontModel.getDatatypeProperty(NAMESPACE + "phone"),
-                ontModel.createTypedLiteral(Store.getPhone()));
-        postIndividual.addProperty(ontModel.getDatatypeProperty(NAMESPACE + "location"), Store.getLocation());
+        postIndividual.addProperty(ontModel.getDatatypeProperty(NAMESPACE + "type"), Seed.getType());
+        postIndividual.addProperty(ontModel.getDatatypeProperty(NAMESPACE + "price"),
+                ontModel.createTypedLiteral(Seed.getPrice()));
+        postIndividual.addProperty(
+                ontModel.getDatatypeProperty(NAMESPACE + "availability"),
+                ontModel.createTypedLiteral(Seed.getAvailability(), "http://www.w3.org/2001/XMLSchema#boolean"));
 
         try (OutputStream outputStream = new FileOutputStream(RDF_FILE)) {
             ontModel.write(outputStream, "RDF/XML-ABBREV");
@@ -101,7 +103,7 @@ public class MiaouiST {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to add the store.");
         }
 
-        return ResponseEntity.status(HttpStatus.CREATED).body("Store added successfully.");
+        return ResponseEntity.status(HttpStatus.CREATED).body("Seed added successfully.");
     }
 
     @DeleteMapping()
