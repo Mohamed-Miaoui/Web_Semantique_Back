@@ -100,4 +100,35 @@ public class Bayoudh_Event {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Event not found.");
         }
     }
+    @PutMapping
+    public ResponseEntity<String> updateEvent(@RequestParam("URI") String eventURI, @RequestBody Event updatedEvent) {
+        OntModel ontModel = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM_MICRO_RULE_INF, model);
+
+        Individual eventIndividual = ontModel.getIndividual(eventURI);
+
+        if (eventIndividual != null) {
+            // Update properties
+            eventIndividual.removeAll(ontModel.getDatatypeProperty(NAMESPACE + "name"));
+            eventIndividual.addProperty(ontModel.getDatatypeProperty(NAMESPACE + "name"), updatedEvent.getName());
+
+            eventIndividual.removeAll(ontModel.getDatatypeProperty(NAMESPACE + "date"));
+            eventIndividual.addProperty(ontModel.getDatatypeProperty(NAMESPACE + "date"), updatedEvent.getDate());
+
+            eventIndividual.removeAll(ontModel.getDatatypeProperty(NAMESPACE + "location"));
+            eventIndividual.addProperty(ontModel.getDatatypeProperty(NAMESPACE + "location"), updatedEvent.getLocation());
+
+            // Save changes to RDF file
+            try (OutputStream outputStream = new FileOutputStream(RDF_FILE)) {
+                ontModel.write(outputStream, "RDF/XML-ABBREV");
+            } catch (IOException e) {
+                e.printStackTrace();
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to update the event.");
+            }
+
+            return ResponseEntity.status(HttpStatus.OK).body("Event updated successfully.");
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Event not found.");
+        }
     }
+
+}
