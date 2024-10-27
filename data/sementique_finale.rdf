@@ -164,9 +164,48 @@
     <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
   </owl:FunctionalProperty>
-  <j.0:Event rdf:about="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Event_1730033599539">
-    <j.0:location>Updated Location</j.0:location>
-    <j.0:name>Updated malam</j.0:name>
-    <j.0:date>2024-10-27</j.0:date>
+  <j.0:Sponsor rdf:about="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Sponsor_1730051282954">
+    <j.0:phone rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+    >54080673</j.0:phone>
+    <j.0:industry>loca</j.0:industry>
+    <j.0:name>ffffff</j.0:name>
+    <j.0:funds>
+      <j.0:Event rdf:about="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Event_1730050636706">
+        <j.0:location>tunis</j.0:location>
+        <j.0:date>2024-10-25</j.0:date>
+        <j.0:name>ev1</j.0:name>
+      </j.0:Event>
+    </j.0:funds>
+  </j.0:Sponsor>
+  <j.0:Event rdf:about="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Event_1730051500110">
+    <j.0:location>tunis</j.0:location>
+    <j.0:date>2024-10-25</j.0:date>
+    <j.0:name>fef</j.0:name>
   </j.0:Event>
+  <j.0:Sponsor rdf:about="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Sponsor_1730051549110">
+    <j.0:funds>
+      <j.0:Event rdf:about="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Event_1730051533439">
+        <j.0:location>geaga</j.0:location>
+        <j.0:date>2024-10-26</j.0:date>
+        <j.0:name>Devops</j.0:name>
+      </j.0:Event>
+    </j.0:funds>
+    <j.0:name>new</j.0:name>
+    <j.0:industry>efafa</j.0:industry>
+    <j.0:phone rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+    >777</j.0:phone>
+  </j.0:Sponsor>
+  <j.0:Sponsor rdf:about="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Sponsor_1730051161661">
+    <j.0:phone rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+    >5555</j.0:phone>
+    <j.0:industry>feafa</j.0:industry>
+    <j.0:name>s1</j.0:name>
+    <j.0:funds rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Event_1730050636706"/>
+  </j.0:Sponsor>
+  <j.0:Garden rdf:about="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Garden_1730051508484">
+    <j.0:name>new</j.0:name>
+    <j.0:size rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+    >4</j.0:size>
+    <j.0:location>jn</j.0:location>
+  </j.0:Garden>
 </rdf:RDF>
