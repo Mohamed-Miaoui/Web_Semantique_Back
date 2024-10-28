@@ -14,6 +14,7 @@ import org.apache.jena.query.ResultSet;
 import org.apache.jena.query.ResultSetFormatter;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
+import org.apache.jena.rdf.model.Property;
 import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.util.FileManager;
 import org.apache.jena.vocabulary.RDF;
@@ -133,4 +134,30 @@ public class MiaouiSD {
         }
     }
 
+    @PutMapping
+    public ResponseEntity<String> addSeedToStore(@RequestParam("SeedURI") String seedURI,
+            @RequestParam("storeURI") String storeURI) {
+
+        OntModel ontModel = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM_MICRO_RULE_INF, model);
+
+        Resource storeResource = model.getResource(storeURI);
+        Property followsProperty = model.createProperty(NAMESPACE + "follows");
+
+        // Remove any existing follows property to avoid duplication
+        storeResource.removeAll(followsProperty);
+
+        // Add the follows property as a reference to the tutorial URI
+        storeResource.addProperty(followsProperty, model.createResource(seedURI));
+
+        // Save the updated model back to RDF
+        try (FileOutputStream out = new FileOutputStream(RDF_FILE)) {
+            ontModel.write(out, "RDF/XML-ABBREV");
+        } catch (IOException e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error saving updated RDF model.");
+        }
+
+        return ResponseEntity.ok("seed added to quiz successfully.");
+
+    }
 }

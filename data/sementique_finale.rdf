@@ -19,128 +19,134 @@
   <owl:Class rdf:about="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Event"/>
   <owl:Class rdf:about="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Sponsor"/>
   <owl:ObjectProperty rdf:about="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#funds">
-    <rdfs:range rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Event"/>
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Sponsor"/>
     <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Sponsor"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Event"/>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#sells">
-    <rdfs:range rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Seed"/>
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Store"/>
     <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Store"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Seed"/>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#follows">
-    <rdfs:range rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Tutorial"/>
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Quiz"/>
     <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Quiz"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Tutorial"/>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#requires">
-    <rdfs:range rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Materiel"/>
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Garden"/>
     <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Garden"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Materiel"/>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#receives">
-    <rdfs:range rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Review"/>
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Blog"/>
     <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Blog"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Review"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#influences">
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Environment"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Plant"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
   </owl:ObjectProperty>
   <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#water_needs">
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Plant"/>
     <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Plant"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
   </owl:DatatypeProperty>
   <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#temperature">
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Environment"/>
     <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Environment"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
   </owl:DatatypeProperty>
   <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#size">
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Garden"/>
     <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Garden"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
   </owl:DatatypeProperty>
   <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#availability">
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Seed"/>
     <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Seed"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
   </owl:DatatypeProperty>
   <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#date">
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Review"/>
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Event"/>
     <rdfs:domain rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Blog"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Event"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Review"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
   <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#title">
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Tutorial"/>
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Blog"/>
     <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Blog"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Tutorial"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
   <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#question">
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Quiz"/>
     <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Quiz"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
   <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#price">
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Seed"/>
     <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Seed"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
   </owl:DatatypeProperty>
   <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#type">
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Seed"/>
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Plant"/>
     <rdfs:domain rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Materiel"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Plant"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Seed"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
   <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#user">
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Review"/>
     <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Review"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
   <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#content">
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Tutorial"/>
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Review"/>
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Blog"/>
     <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Blog"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Review"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Tutorial"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
   <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#industry">
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Sponsor"/>
     <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Sponsor"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
   <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#humidity">
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Environment"/>
     <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Environment"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
   </owl:DatatypeProperty>
   <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#quantity">
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Materiel"/>
     <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Materiel"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
   </owl:DatatypeProperty>
   <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#light_conditions">
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Environment"/>
     <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Environment"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
   <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#phone">
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Store"/>
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Sponsor"/>
     <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Sponsor"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Store"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
   </owl:DatatypeProperty>
   <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#location">
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Store"/>
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Garden"/>
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Event"/>
     <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Event"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Garden"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Store"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
   <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#estimated_time">
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Tutorial"/>
     <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Tutorial"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
   </owl:DatatypeProperty>
   <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#name">
     <rdfs:domain rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Garden"/>
@@ -154,106 +160,109 @@
     <rdfs:domain rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Seed"/>
   </owl:DatatypeProperty>
   <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#answer">
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Quiz"/>
     <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Quiz"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
-  <owl:FunctionalProperty rdf:about="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#influences">
-    <rdfs:range rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Plant"/>
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Environment"/>
-    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-  </owl:FunctionalProperty>
-  <j.0:Blog rdf:about="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Blog_1730076820786">
-    <j.0:title>Challenges of Urban Agriculture</j.0:title>
-    <j.0:date>2024-10-25</j.0:date>
-    <j.0:content>Water Access
-Access to clean water is essential for successful urban agriculture. Urban farmers often need to find creative solutions for irrigation, such as rainwater harvesting or using greywater systems.</j.0:content>
-  </j.0:Blog>
   <j.0:Plant rdf:about="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Plant_1730030607348">
-    <j.0:name>zzzzz</j.0:name>
-    <j.0:type>123h</j.0:type>
     <j.0:water_needs>5.0</j.0:water_needs>
+    <j.0:type>123h</j.0:type>
+    <j.0:name>zzzzz</j.0:name>
   </j.0:Plant>
   <j.0:Store rdf:about="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Store_1730073396149">
-    <j.0:location>Manzeh 5</j.0:location>
+    <j.0:name>Plant Pots</j.0:name>
     <j.0:phone rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
     >22994455</j.0:phone>
-    <j.0:name>Plant Pots</j.0:name>
+    <j.0:location>Manzeh 5</j.0:location>
   </j.0:Store>
   <j.0:Store rdf:about="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Store_1730073375855">
-    <j.0:location>Mourouj</j.0:location>
+    <j.0:name>Garden Gloves</j.0:name>
     <j.0:phone rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
     >55112233</j.0:phone>
-    <j.0:name>Garden Gloves</j.0:name>
+    <j.0:location>Mourouj</j.0:location>
   </j.0:Store>
   <j.0:Review rdf:about="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Review_1730076193126">
-    <j.0:date>2024-10-28</j.0:date>
-    <j.0:content>The blog succinctly highlights how urban agriculture fosters economic opportunities by creating jobs and promoting local entrepreneurship through farmers' markets and food cooperatives. It effectively emphasizes the importance of community investment in sustainable food systems.</j.0:content>
     <j.0:user>selim</j.0:user>
+    <j.0:content>The blog succinctly highlights how urban agriculture fosters economic opportunities by creating jobs and promoting local entrepreneurship through farmers' markets and food cooperatives. It effectively emphasizes the importance of community investment in sustainable food systems.</j.0:content>
+    <j.0:date>2024-10-28</j.0:date>
   </j.0:Review>
+  <rdf:Description rdf:about="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Quiz_1730074720643">
+    <j.0:follows>
+      <j.0:Tutorial rdf:about="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Tutorial1730074724294">
+        <j.0:estimated_time>12</j.0:estimated_time>
+        <j.0:content>zety</j.0:content>
+        <j.0:title>zetr</j.0:title>
+      </j.0:Tutorial>
+    </j.0:follows>
+  </rdf:Description>
   <j.0:Event rdf:about="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Event_1730076501033">
-    <j.0:location>Centre Urbain</j.0:location>
-    <j.0:date>2024-12-11</j.0:date>
     <j.0:name>Community Garden Day</j.0:name>
+    <j.0:date>2024-12-11</j.0:date>
+    <j.0:location>Centre Urbain</j.0:location>
   </j.0:Event>
-  <j.0:Plant rdf:about="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Plant_1730076664353">
-    <j.0:name>Spider Plant</j.0:name>
-    <j.0:type>Houseplant</j.0:type>
-    <j.0:water_needs>20.0</j.0:water_needs>
-  </j.0:Plant>
   <j.0:Quiz rdf:about="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Quiz_1730076612083">
-    <j.0:question>What is urban architecture?</j.0:question>
     <j.0:answer>It’s the design of buildings, streets, and public spaces in cities.</j.0:answer>
+    <j.0:question>What is urban architecture?</j.0:question>
   </j.0:Quiz>
-  <j.0:Blog rdf:about="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Blog_1730076788589">
-    <j.0:title>Benefits of Urban Agriculture</j.0:title>
-    <j.0:date>2024-10-27</j.0:date>
-    <j.0:content>Environmental Sustainability
-Urban farms contribute to environmental sustainability by reducing greenhouse gas emissions associated with food transportation. They also promote biodiversity, improve air quality, and help manage stormwater runoff. Green spaces created through urban agriculture can mitigate the urban heat island effect, contributing to cooler city temperatures.</j.0:content>
-  </j.0:Blog>
   <j.0:Seed rdf:about="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Seed_1730041676124">
+    <j.0:type>Wheat</j.0:type>
+    <j.0:price rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+    >122.0</j.0:price>
     <j.0:availability rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
     >true</j.0:availability>
-    <j.0:price rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
-    >122.0</j.0:price>
-    <j.0:type>Wheat</j.0:type>
   </j.0:Seed>
   <j.0:Event rdf:about="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Event_1730076482182">
-    <j.0:location>Ben Arous</j.0:location>
-    <j.0:date>2024-11-07</j.0:date>
     <j.0:name>Plant Swap Event</j.0:name>
+    <j.0:date>2024-11-07</j.0:date>
+    <j.0:location>Ben Arous</j.0:location>
   </j.0:Event>
-  <j.0:Plant rdf:about="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Plant_1730076677138">
-    <j.0:name>Pothos</j.0:name>
-    <j.0:type>Houseplant</j.0:type>
-    <j.0:water_needs>30.0</j.0:water_needs>
-  </j.0:Plant>
-  <j.0:Tutorial rdf:about="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Tutorial1730076936179">
-    <j.0:title>Fundamentals of Urban Architecture</j.0:title>
-    <j.0:content>Study the basics of urban design, planning, and how cities are structured. This helps in understanding what urban architecture is and its components.</j.0:content>
-    <j.0:estimated_time>60</j.0:estimated_time>
-  </j.0:Tutorial>
-  <j.0:Tutorial rdf:about="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Tutorial1730076960867">
-    <j.0:title>Public Space and Urban Design</j.0:title>
-    <j.0:content>Study the purpose and design of public spaces, including parks, plazas, and pedestrian areas. This covers how public spaces contribute to urban life.</j.0:content>
-    <j.0:estimated_time>90</j.0:estimated_time>
-  </j.0:Tutorial>
   <j.0:Seed rdf:about="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Seed_1730041794658">
-    <j.0:availability rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
-    >false</j.0:availability>
+    <j.0:type>SEEDI Bous3id</j.0:type>
     <j.0:price rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
     >122.0</j.0:price>
-    <j.0:type>SEEDI Bous3id</j.0:type>
+    <j.0:availability rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+    >false</j.0:availability>
   </j.0:Seed>
   <j.0:Store rdf:about="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Store_1730073435969">
-    <j.0:location>Charguia</j.0:location>
+    <j.0:name>Plant Stand</j.0:name>
     <j.0:phone rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
     >99332266</j.0:phone>
-    <j.0:name>Plant Stand</j.0:name>
+    <j.0:location>Charguia</j.0:location>
   </j.0:Store>
   <j.0:Quiz rdf:about="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Quiz_1730076623082">
-    <j.0:question>What does “public space” mean in a city?</j.0:question>
     <j.0:answer>Public spaces are areas open to everyone, like parks, plazas, and streets.</j.0:answer>
+    <j.0:question>What does “public space” mean in a city?</j.0:question>
   </j.0:Quiz>
+  <j.0:Plant rdf:about="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Plant_1730076664353">
+    <j.0:water_needs>20.0</j.0:water_needs>
+    <j.0:type>Houseplant</j.0:type>
+    <j.0:name>Spider Plant</j.0:name>
+  </j.0:Plant>
+  <j.0:Plant rdf:about="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Plant_1730076677138">
+    <j.0:water_needs>30.0</j.0:water_needs>
+    <j.0:type>Houseplant</j.0:type>
+    <j.0:name>Pothos</j.0:name>
+  </j.0:Plant>
+  <j.0:Blog rdf:about="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Blog_1730076788589">
+    <j.0:content>Environmental Sustainability
+Urban farms contribute to environmental sustainability by reducing greenhouse gas emissions associated with food transportation. They also promote biodiversity, improve air quality, and help manage stormwater runoff. Green spaces created through urban agriculture can mitigate the urban heat island effect, contributing to cooler city temperatures.</j.0:content>
+    <j.0:date>2024-10-27</j.0:date>
+    <j.0:title>Benefits of Urban Agriculture</j.0:title>
+  </j.0:Blog>
+  <j.0:Blog rdf:about="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Blog_1730076820786">
+    <j.0:content>Water Access
+Access to clean water is essential for successful urban agriculture. Urban farmers often need to find creative solutions for irrigation, such as rainwater harvesting or using greywater systems.</j.0:content>
+    <j.0:date>2024-10-25</j.0:date>
+    <j.0:title>Challenges of Urban Agriculture</j.0:title>
+  </j.0:Blog>
+  <j.0:Tutorial rdf:about="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Tutorial1730076936179">
+    <j.0:estimated_time>60</j.0:estimated_time>
+    <j.0:content>Study the basics of urban design, planning, and how cities are structured. This helps in understanding what urban architecture is and its components.</j.0:content>
+    <j.0:title>Fundamentals of Urban Architecture</j.0:title>
+  </j.0:Tutorial>
+  <j.0:Tutorial rdf:about="http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#Tutorial1730076960867">
+    <j.0:estimated_time>90</j.0:estimated_time>
+    <j.0:content>Study the purpose and design of public spaces, including parks, plazas, and pedestrian areas. This covers how public spaces contribute to urban life.</j.0:content>
+    <j.0:title>Public Space and Urban Design</j.0:title>
+  </j.0:Tutorial>
 </rdf:RDF>
