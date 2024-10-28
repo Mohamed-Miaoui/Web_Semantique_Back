@@ -110,11 +110,17 @@ public class QuizController {
 
         String queryString = "PREFIX ont: <http://www.semanticweb.org/9naydel/ontologies/2024/9/untitled-ontology-10#>\n" +
                 "\n" +
-                "SELECT ?quiz ?question ?answer\n" +
+                "SELECT ?quiz ?question ?answer ?tutorial ?tutorialTitle ?tutorialContent ?tutorialEstimatedTime\n" +
                 "WHERE {\n" +
                 "    ?quiz a ont:Quiz .\n" +
                 "    ?quiz ont:question ?question .\n" +
                 "    ?quiz ont:answer ?answer .\n" +
+                "    OPTIONAL {\n" +
+                "        ?quiz ont:follows ?tutorial .\n" +
+                "        ?tutorial ont:title ?tutorialTitle .\n" +
+                "        ?tutorial ont:content ?tutorialContent .\n" +
+                "        ?tutorial ont:estimated_time ?tutorialEstimatedTime .\n" +
+                "    }\n" +
                 "    FILTER(CONTAINS(LCASE(?question), LCASE(\"" + search + "\")))\n" +
                 "}";
         String qexec = queryString;
