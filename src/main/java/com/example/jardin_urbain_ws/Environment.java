@@ -1,19 +1,19 @@
 package com.example.jardin_urbain_ws;
 
 //light_conditions(string), temperature(double), humidity(double)
-public class Environnement {
+public class Environment {
 
     private String light_conditions;
     private Double temperature;
     private Double humidity;
 
-    public Environnement(String light_conditions, Double temperature, Double humidity) {
+    public Environment(String light_conditions, Double temperature, Double humidity) {
         this.light_conditions = light_conditions;
         this.temperature = temperature;
         this.humidity = humidity;
     }
 
-    public Environnement() {
+    public Environment() {
     }
 
     public String getLight_conditions() {
