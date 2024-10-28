@@ -2,6 +2,9 @@ package com.example.jardin_urbain_ws;
 
 //name(string), size(integer), location(string)
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Garden {
     private String name;
     private Integer size;
@@ -35,6 +38,7 @@ public class Garden {
     public String getLocation() {
         return location;
     }
+
 
     public void setLocation(String location) {
         this.location = location;
